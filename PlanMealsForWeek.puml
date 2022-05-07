@@ -1,4 +1,5 @@
 @startuml
+Actor User as User
 loop
         User -> UI: Select "generate meal plan" option
         UI -> MealPlan: Send user constraints

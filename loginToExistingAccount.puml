@@ -1,13 +1,17 @@
 @startuml
+Actor User as User
 User -> UI: Login to account
 UI -> User: Provide username and password
 User -> UI: Enter username and password
-UI -> DB: check credentials
+UI -> Backend: Validate input
+Backend -> DB: check credentials
 alt credentials are valid
-        DB -> UI: Login user with session
+        DB -> Backend: Login accepted
+        Backend -> UI: Login user with session
         UI -> User: Acknowledge login, display options
 else credentials are invalid
-        DB -> UI: Failed Authentication
+        DB -> Backend: Login Rejected
+        Backend -> UI: Failed Authentication
         UI -> User: Display bad password
 end
 @enduml

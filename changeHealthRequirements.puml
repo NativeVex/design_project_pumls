@@ -1,4 +1,5 @@
 @startuml
+Actor User as User
 User -> UI: User selects the change health requirements option
 UI -> DB: Fetch current user configuration
 DB -> UserHealthConfig: get current config

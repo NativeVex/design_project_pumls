@@ -1,13 +1,16 @@
 @startuml
+Actor User as User
 User -> UI: Sign up for new account
 UI -> User: Request credentials
 User -> UI: Input email, username and desired password
-UI -> DB: Request user with specified credentials
+UI -> Backend: Validate input
+Backend -> DB: Request user with specified credentials
 alt no such user found
-        DB -> UI: New user created
-        UI -> User: Acknowledge new account creation
+        DB -> Backend: New user created
+        Backend -> User: Acknowledge new account creation
 else user already exists
-        DB -> UI: User exists
+        DB -> Backend: User exists
+        Backend -> UI: User exists
         UI -> User: Prompt user to choose a different username
 end
 @enduml

@@ -1,3 +1,4 @@
+Actor User as User
 User -> UI: Request meals and exercises for the day
 UI -> MealPlan: get current prescribed mealplan
 UI -> DB: get exercises that match Health targets
