@@ -1,0 +1,42 @@
+@startuml
+class User {
+        String Username
+        Base64Hash password
+        UserHealthConfig config
+        MealPlan plan
+        login()
+        getHealthConfig()
+        setHealthConfig()
+        reRollMealPlan()
+        listSavedMealPlans()
+}
+class DB {
+        getEntry()
+        setEntry()
+}
+class UI {
+        updateStatus()
+}
+class MealPlan{
+        Recipe list[]
+        MealPlan(UserHealthConfig criteria)
+}
+class Recipe{
+        Ingredient list[]
+        Instructions list[]
+        NutritionalValues list[]
+}
+class UserHealthConfig{
+        getMostRecentHealthConfig()
+        setNewHealthConfig()
+        getNthConfig(int N)
+        JSON CurrentConfig
+}
+class Exercise{
+        JSON tags
+}
+class ExercisePlan{
+  Exercise list[]
+  ExercisePlan(UserHealthConfig criteria)
+}
+@enduml

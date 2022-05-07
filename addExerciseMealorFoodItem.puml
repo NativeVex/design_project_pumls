@@ -1,0 +1,21 @@
+@startuml
+User -> UI: Add new data entry
+UI -> User: Display options for what types of data the user could add
+User -> UI: Select and adjust options, filling in required criteria
+alt User saves their changes
+        User -> UI: Save changes
+        UI -> DB: Register new data type
+        alt Data type is meal
+                DB -> Recipe: Update list of known entires
+        else Data type is food
+                DB -> Food: Update list of known entries
+        else Data type is exercise
+                DB -> Exercise: Update list of known entries
+        end
+        DB -> UI: Acknowledge successful save
+        UI -> User: Saved changes
+else User changes their mind
+        User -> UI: Discard/Leave UI
+        UI -> User: Return to previous screen
+end
+@enduml

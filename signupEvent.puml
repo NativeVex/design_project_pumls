@@ -1,0 +1,7 @@
+[*] -> Signup
+Signup: Sign up for new account
+Signup -> Authenticating: Input email, username and desired password
+Authenticating -> Reject
+Authenticating -> Accept
+Reject: Prompt user to choose a different username
+Accept: New user created

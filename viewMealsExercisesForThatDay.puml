@@ -1,0 +1,13 @@
+User -> UI: Request meals and exercises for the day
+UI -> MealPlan: get current prescribed mealplan
+UI -> DB: get exercises that match Health targets
+DB -> UserHealthConfig: request health config
+UserHealthConfig -> DB: return current config
+DB -> Exercise: List exercises that, given current mealplan, match health targets
+Exercise -> DB: Return list of matches
+alt At least one match is returned
+        DB -> UI: Update with most highly recommended exercise
+else No matches returned
+        DB -> UI: Inform user that no exercises exist that can match criteria
+end
+UI -> User: Return data

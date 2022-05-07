@@ -1,0 +1,13 @@
+@startuml
+User -> UI: Login to account
+UI -> User: Provide username and password
+User -> UI: Enter username and password
+UI -> DB: check credentials
+alt credentials are valid
+        DB -> UI: Login user with session
+        UI -> User: Acknowledge login, display options
+else credentials are invalid
+        DB -> UI: Failed Authentication
+        UI -> User: Display bad password
+end
+@enduml

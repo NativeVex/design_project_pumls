@@ -1,0 +1,4 @@
+[*]         --> MealsPage
+MealsPage   --> GenerateNew: Request new MealPlan generation
+GenerateNew --> MealsPage: Display new MealPlan 
+MealsPage   --> [*]: User is happy with plan

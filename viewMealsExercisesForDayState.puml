@@ -1,0 +1,3 @@
+[*] --> EntryPage: User is logged into the app
+EntryPage --> WeeklyBreakdown: User request meals and exercises to be displayed for the day
+WeeklyBreakdown --> [*]: Meals and exercises are displayed

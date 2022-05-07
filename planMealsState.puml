@@ -1,0 +1,14 @@
+[*]            --> InputNewData
+InputNewData   --> VerifyValidity: User has input a new datatype
+VerifyValidity --> InputNewData: Data is invalid
+VerifyValidity --> AddNewDataType: Data is valid
+AddNewDataType --> NewRecipe: Data added was registered as a recipe
+AddNewDataType --> NewFood: Data added was registered as a food
+AddNewDataType --> NewExercise: Data added was registered as a exercise
+NewRecipe      --> Acknowledge: User saved
+NewFood        --> Acknowledge: User saved
+NewExercise    --> Acknowledge: User saved
+NewRecipe      --> InputNewData: User didnt save
+NewFood        --> InputNewData: User didnt save
+NewExercise    --> InputNewData: User didnt save
+Acknowledge    --> [*]: New data type added

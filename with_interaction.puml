@@ -1,0 +1,25 @@
+@startuml
+class User
+class DB
+class UI
+class MealPlan
+class Recipe
+class UserHealthConfig
+class Exercise
+class ExercisePlan
+
+
+User "1" --> "0..*" MealPlan
+MealPlan "1" *-- "2..*" Recipe
+User "1" --> "1" ExercisePlan
+ExercisePlan "1" *-- "*" Exercise
+
+User "1" --> "1..5" UserHealthConfig
+
+User "1" -- "1" UI
+DB "1" -- "1..*" MealPlan
+DB "1" -- "1..*" User
+DB "1" -- "1..*" ExercisePlan
+
+
+@enduml

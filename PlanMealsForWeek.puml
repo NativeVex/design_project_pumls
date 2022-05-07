@@ -1,0 +1,24 @@
+@startuml
+loop
+        User -> UI: Select "generate meal plan" option
+        UI -> MealPlan: Send user constraints
+        MealPlan -> DB: Query for recipies that adhere to user criteria
+        DB -> Recipe: filter known recipies
+        alt Recipie matches criteria
+                Recipe -> DB: A positive match
+        else
+                Recipe -> DB: Not a valid match
+        end
+        DB -> MealPlan: Return top suggested match
+        MealPlan -> UI: update suggested match
+        UI -> User: display available meals
+        alt User is satisfied with MealPlan
+                User -> UI: save MealPlan
+                UI -> MealPlan: save to user account
+                MealPlan -> DB: associate this mealplan with user account
+                DB -> UI: Acknowledge update in user account
+                UI -> User: Display success
+        else
+        end
+end
+@enduml

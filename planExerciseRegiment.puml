@@ -1,0 +1,19 @@
+@startuml
+actor User as human
+human -> UI: User selects "generate exercise plan" option
+UI -> ExercisePlan: send user constraints
+ExercisePlan -> DB: Query for exercises within user exercise threshold
+DB -> Exercise: Filter by intensity
+alt Exercise matches filter criteria
+Exercise -> DB: positive matche
+else
+Exercise -> DB: no match
+end
+DB -> ExercisePlan: Return a list of matches
+ExercisePlan -> DB: Save exerciseplan user has generated to their account
+DB -> User: Save exerciseplan
+User -> DB: Acknowledge
+DB -> ExercisePlan: Acknowledge
+ExercisePlan -> UI: update suggested match
+UI -> human: display exerciseplan
+@enduml

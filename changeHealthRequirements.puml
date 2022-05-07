@@ -1,0 +1,25 @@
+@startuml
+User -> UI: User selects the change health requirements option
+UI -> DB: Fetch current user configuration
+DB -> UserHealthConfig: get current config
+UserHealthConfig -> DB: return current config
+DB -> UI: Return current user configuration
+UI -> User: Display options for currently implemented health targets
+User -> UI: Select and adjust options
+UI -> DB: Request old configurations if present
+UserHealthConfig <- DB: request cached configs
+UserHealthConfig -> DB: return cached configs
+DB -> UI: Return old configurations
+UI -> User: Display previous values
+alt User saves their changes
+        User -> UI: Save changes
+        UI -> DB: Register new entry for updated criteria for user
+        DB -> UserHealthConfig: Update current config, bump cached versions
+        UserHealthConfig -> DB: Acknowledge
+        DB -> UI: Acknowledge successful save
+        UI -> User: Saved changes
+else User changes their mind
+        User -> UI: Discard/Leave UI
+        UI -> User: Return to previous screen
+end
+@enduml

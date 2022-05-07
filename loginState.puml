@@ -1,0 +1,6 @@
+[*] -> LoginPage
+LoginPage -> Authenticating: Enter username and password
+Authenticating -> Accept: Correct username and password
+Authenticating -> Reject: Incorrect username and password
+Accept: User now logged in -> [*]
+Reject -> LoginPage
