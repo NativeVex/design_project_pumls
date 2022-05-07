@@ -1,0 +1,10 @@
+ExercisePage: Display state of user's exercises
+TakeRequirements: show adjustable fields
+GenerateNew: processing input
+SaveExercisePlan: write to DB
+
+[*] --> ExercisePage
+ExercisePage --> TakeRequirements
+TakeRequirements --> GenerateNew
+GenerateNew --> SaveExercisePlan
+SaveExercisePlan --> [*]

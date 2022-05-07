@@ -1,0 +1,5 @@
+[*] --> ExercisePage: Display option for user to generate exercise plan
+ExercisePage --> TakeRequirements: Input and validate user requirements
+TakeRequirements --> GenerateNew: Create new exercise plan based on user's requirements
+GenerateNew --> SaveExercisePlan: Save user's exerciseplan
+SaveExercisePlan --> [*]
